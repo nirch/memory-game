@@ -1,7 +1,11 @@
 
 .c-memory-card {
     height: 0;
-    padding-bottom: calc(100% - 20px);
-    background-color: gold;
-    border: 10px solid white;
+    padding-bottom: calc(100% - 6px);
+    border: 3px solid rgb(31,31, 39);
+}
+
+.c-memory-card > img {
+    width: 100%;
+    padding: 5px;
 }
