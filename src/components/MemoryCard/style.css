@@ -1,21 +1,38 @@
 
 .c-memory-card {
     height: 0;
-    padding-bottom: calc(100% - 6px);
-    border: 3px solid rgb(31,31, 39);
+    padding-bottom: 100%;
     position: relative;
 }
 
-.c-memory-card > .img-container {
+.c-memory-card > .card-inner {
     position: absolute;
     width: 100%;
     height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.c-memory-card.up .card-inner {
+    transform: rotateY(180deg);
+  }
+
+.c-memory-card .card-face-down, .c-memory-card .card-face-up {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
 }
 
 .c-memory-card img {
     width: 100%;
     padding: 5px;
+    border: 3px solid rgb(31,31, 39);
     height: 100%;
     object-fit: cover;
 }
 
+.c-memory-card .card-face-up {
+    transform: rotateY(180deg);
+}
