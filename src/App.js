@@ -9,12 +9,15 @@ function App() {
   const [settings, setSettings] = useState({
     cardBackground
   })
+  const [cardFaceDown, setCardFaceDown] = useState(true);
 
 
   return (
     <SettingsContext.Provider value={settings}>
       <div className="App">
-        <MemoryCard faceDown={false} faceUpImg={inbar1Img}/>
+        <div onClick={() => setCardFaceDown(!cardFaceDown)}>
+          <MemoryCard faceDown={cardFaceDown} faceUpImg={inbar1Img}/>
+        </div>
       </div>
     </SettingsContext.Provider>
   );
