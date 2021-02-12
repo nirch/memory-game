@@ -1,24 +1,27 @@
 import { useState } from 'react';
 import './App.css';
-import MemoryCard from './components/MemoryCard';
 import SettingsContext from './shared/SettingsContext';
 import cardBackgroundImg from './assets/images/backgrounds/background-square-card.jpg'
-import inbar1Img from './assets/images/foregrounds/inbar-1.jpg'
-import roni1Img from './assets/images/foregrounds/roni-1.jpg'
 import MemoryGame from './components/MemoryGame';
+
+
+// importing all images from the foregrounds directory
+function importAll(r) {
+  const images = r.keys().map(item => r(item).default);
+  return images;
+}
+const images = importAll(require.context('./assets/images/foregrounds', false, /\.(png|jpe?g|svg)$/));
+
 
 function App() {
   const [settings, setSettings] = useState({
     cardBackgroundImg
   });
 
-  const cardImgs = [inbar1Img, roni1Img];
-
-
   return (
     <SettingsContext.Provider value={settings}>
       <div className="App">
-        <MemoryGame cardImgs={cardImgs}/>
+        <MemoryGame cardImgs={images}/>
       </div>
     </SettingsContext.Provider>
   );
