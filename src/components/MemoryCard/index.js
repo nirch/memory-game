@@ -3,10 +3,10 @@ import SettingsContext from '../../shared/SettingsContext';
 import './style.css'
 
 function MemoryCard(props) {
-    const {faceDown, card, onClick} = props;
+    const {card, onClick} = props;
     const {cardBackgroundImg} = useContext(SettingsContext);
     
-    const faceClass = faceDown ? "down" : "up";
+    const faceClass = card.faceUp ? "up" : "down";
 
     return (
         <div className={'c-memory-card ' + faceClass} onClick={() => onClick()}>
