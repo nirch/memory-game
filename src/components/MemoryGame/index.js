@@ -1,3 +1,4 @@
+import confetti from 'canvas-confetti';
 import React, { useEffect, useMemo, useState } from 'react';
 import { shuffleArray } from '../../shared/utils';
 import MemoryCard from '../MemoryCard';
@@ -20,18 +21,27 @@ function MemoryGame(props) {
     }, [cardImgs])
 
     useEffect(() => {
-        const faceUpNotMached = cards.filter(card => card.faceUp && !card.matched);
-        if (faceUpNotMached.length > 1) {
-            setTimeout(() => {
-                const cardsClone = [...cards];
-                faceUpNotMached.forEach(card => {
-                    const index = cards.indexOf(card);
-                    const cardClone = {...cards[index]};
-                    cardClone.faceUp = false;
-                    cardsClone[index] = cardClone;
-                })
-                setCards(cardsClone);
-            }, 2000);
+        if (cards.length > 0) {
+            const faceUpNotMached = cards.filter(card => card.faceUp && !card.matched);
+            if (faceUpNotMached.length > 1) {
+                setTimeout(() => {
+                    const cardsClone = [...cards];
+                    faceUpNotMached.forEach(card => {
+                        const index = cards.indexOf(card);
+                        const cardClone = {...cards[index]};
+                        cardClone.faceUp = false;
+                        cardsClone[index] = cardClone;
+                    })
+                    setCards(cardsClone);
+                }, 2000);
+            } else if (cards.filter(card => card.matched).length === cards.length) {
+                // all matched - GAME OVER
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
         }
     }, [cards])
 
