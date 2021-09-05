@@ -1,19 +1,10 @@
 import { calcSide } from '../../shared/utils';
 import './style.css'
 
-export default () => {
-
-
-    const cardNum = 12;
-    const height = 750;
-    const width = 1000;
+export default ({width, height, cardNum}) => {
     const {cardSize, rows, columns, yGutters, xGutters} = calcSide(width, height, cardNum);
 
-    const boardStyle = {
-        width: width + "px",
-        height: height + "px",
-        backgroundColor: "red"
-    }
+    const boardStyle = {}
     if (yGutters) {
         boardStyle.paddingTop = yGutters;
         boardStyle.paddingBottom = yGutters;
