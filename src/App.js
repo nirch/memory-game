@@ -3,6 +3,7 @@ import './App.css';
 import SettingsContext from './shared/SettingsContext';
 import cardBackgroundImg from './assets/images/backgrounds/background-square-card.jpg'
 import MemoryGame from './components/MemoryGame';
+import MemoryBoard from './components/MemoryBoard';
 
 
 // importing all images from the foregrounds directory
@@ -21,7 +22,8 @@ function App() {
   return (
     <SettingsContext.Provider value={settings}>
       <div className="App">
-        <MemoryGame cardImgs={images}/>
+        {/* <MemoryGame cardImgs={images}/> */}
+        <MemoryBoard/>
       </div>
     </SettingsContext.Provider>
   );

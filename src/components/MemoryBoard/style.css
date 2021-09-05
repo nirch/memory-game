@@ -1,0 +1,13 @@
+
+.c-memory-board {
+    background-color: black;
+    display: grid;
+    /* gap: 5px 5px; */
+    /* padding: 5px; */
+}
+
+.c-memory-board .card {
+    background-color: blue;
+    /* border: solid 1px; */
+    margin: 5px;
+}

@@ -1,6 +1,7 @@
 import confetti from 'canvas-confetti';
-import React, { useEffect, useMemo, useState } from 'react';
-import { shuffleArray } from '../../shared/utils';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useResizeDetector } from 'react-resize-detector';
+import { calcSide, shuffleArray } from '../../shared/utils';
 import MemoryCard from '../MemoryCard';
 import './style.css'
 
@@ -8,6 +9,12 @@ import './style.css'
 function MemoryGame(props) {
     const {cardImgs} = props;
     const [cards, setCards] = useState([]);
+
+    const { width, height, ref } = useResizeDetector();
+    console.log(width, height);
+    if (width && height) {
+        const {cardSize, rows, columns} = calcSide(width, height, cardImgs.length * 2);
+    }
 
     useEffect(() => {
         // creating 2 cards of the same image. then shuffling the cards
@@ -84,13 +91,13 @@ function MemoryGame(props) {
 
     const cardsView = cards.map((card, index) => 
         <div className="card" key={index}>
-            <MemoryCard card={card} onClick={() => cardClicked(index)}/>
+            {/* <MemoryCard card={card} size={cardSize} onClick={() => cardClicked(index)}/> */}
         </div>
     );
 
     return (
         <div className="c-memory-game">
-            <div className="board">
+            <div className="board" ref={ref}>
                 {cardsView}
             </div>
         </div>
