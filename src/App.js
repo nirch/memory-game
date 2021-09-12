@@ -36,14 +36,14 @@ function App() {
         {/* <h1>Memory Game</h1> */}
         {/* <MemoryGame cardImgs={images}/> */}
 
-        <div>
+        {/* <div>
           Cards {cardNum} 
           <button onClick={() => setCardNum(cardNum + 2)}>+</button>
           <button onClick={() => setCardNum(cardNum - 2)}>-</button>
-        </div>
+        </div> */}
         <div className="boardContainer" ref={boardRef}>
           {boardDimensions.height ? 
-            <MemoryBoard width={boardDimensions.width} height={boardDimensions.height} cardNum={cardNum}/> : 
+            <MemoryBoard width={boardDimensions.width} height={boardDimensions.height} cardImgs={images}/> : 
             null
           }
         </div>
