@@ -21,6 +21,7 @@ function App() {
   });
   const boardRef = useRef(null);
   const { width, height, ref } = useResizeDetector();
+  const [cardNum, setCardNum] = useState(12);
 
   const boardDimensions = {};
   if (width && boardRef && boardRef.current) {
@@ -35,9 +36,14 @@ function App() {
         {/* <h1>Memory Game</h1> */}
         {/* <MemoryGame cardImgs={images}/> */}
 
+        <div>
+          Cards {cardNum} 
+          <button onClick={() => setCardNum(cardNum + 2)}>+</button>
+          <button onClick={() => setCardNum(cardNum - 2)}>-</button>
+        </div>
         <div className="boardContainer" ref={boardRef}>
           {boardDimensions.height ? 
-            <MemoryBoard width={boardDimensions.width} height={boardDimensions.height} cardNum={18}/> : 
+            <MemoryBoard width={boardDimensions.width} height={boardDimensions.height} cardNum={cardNum}/> : 
             null
           }
         </div>
